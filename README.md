@@ -1,79 +1,89 @@
-Requirements
-General
-Allowed editors: vi, vim, emacs
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-All your files should end with a new line
-A README.md file, at the root of the folder of the project is mandatory
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-Your shell should not have any memory leaks
-No more than 5 functions per file
-All your header files should be include guarded
-Use system calls only when you need to (why?)
-Write a README with the description of your project
-You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository.
+# 0x16. C - SIMPLE SHELL
 
-Output
-Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-The only difference is when you print an error, the name of the program must be equivalent to your argv[0].
+<p align="center">
+<img src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg">
+</p>
 
-List of allowed functions and system calls
-access (man 2 access)
-chdir (man 2 chdir)
-close (man 2 close)
-closedir (man 3 closedir)
-execve (man 2 execve)
-exit (man 3 exit)
-_exit (man 2 _exit)
-fflush (man 3 fflush)
-fork (man 2 fork)
-free (man 3 free)
-getcwd (man 3 getcwd)
-getline (man 3 getline)
-getpid (man 2 getpid)
-isatty (man 3 isatty)
-kill (man 2 kill)
-malloc (man 3 malloc)
-open (man 2 open)
-opendir (man 3 opendir)
-perror (man 3 perror)
-read (man 2 read)
-readdir (man 3 readdir)
-signal (man 2 signal)
-stat (__xstat) (man 2 stat)
-lstat (__lxstat) (man 2 lstat)
-fstat (__fxstat) (man 2 fstat)
-strtok (man 3 strtok)
-wait (man 2 wait)
-waitpid (man 2 waitpid)
-wait3 (man 2 wait3)
-wait4 (man 2 wait4)
-write (man 2 write)
-Compilation
-Your shell will be compiled this way:
+## Description
 
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-
-Tasks
-0. Betty would be proud
-Write a beautiful code that passes the Betty checks.
-
-1. Simple shell 0.1
-Write a UNIX command line interpreter.
-
-2. Simple shell 0.
-Simple shell 0.1 +
-
-Handle command lines with arguments.
-
-3. Simple shell 0.3
-Simple shell 0.2 +.
-
-4. Simple shell 0.4
-Simple shell 0.3 +
-
-5. Simple shell 1.0
-Simple shell 0.4 +
-
-Implement the env built-in, that prints the current environment.
+`Simple_shell` is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
 
 
+The `simple_shell` is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. The `simple_shell` implements a language that has flow control constructs, a macro facility that provides a variety of features in addition to data storage, along with built in history and lineediting capabilities. It incorporates many features to aid interactive use and has the advantage that the interpretative language is common to both interactive and non-interactive use`(shell scripts)`. That is, commands canbe typed directly to the running shell or can be put into a file and the file can be executed directly by the shell.
+
+
+## Syntax
+
+The shell works by using commands given by the user input. The shell commands take in the following syntax:
+
+`#cisfun$ <command> <flags or options> <argument 1> <argument 2> ...`
+
+## Features
+
+- Displays a prompt and waits for user to type a command
+- Can handle commands with options and arguments
+- Prompt displays again each time command is executed
+- Uses PATH variable to find executable command
+- If executable is not found, prints an error message and displays prompt again
+- Includes an exit function that exits the shell
+- Includes an env built-in that prints the current environment
+
+
+## Usage
+
+- Enter custom shell by typing `"./hsh"`. You should be prompted with a `#cisfun$`
+- Type a command of your liking and press `"Enter"`
+- Appropriate output will appear
+- Prompt reappears and awaits your next command
+- Exit shell by typing `"exit"` o `"ctrl D"`
+
+
+## Environment
+
+The custom shell was developed and tested on `Ubuntu 14.04` LTS via Vagrant in VirtualBox.
+
+
+## Compilation
+
+All files will be compiled with the following: 
+```bash
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
+
+## Exiting commands and the shell
+
+To exit out of a command or process the user can use `ctrl c`. `Control c` stops a process and causes it to abort. The user can also utilize the command `ctrl D` which will just exit. When the command `ctrl D` is used an exit status of 0 is given. Using `exit`, you can input its exit status or it is defaulted to thestatus of the last command executed.
+
+
+## Example
+
+Interactive Mode
+
+```bash
+ $ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+ $
+```
+Non-interactive Mode
+
+```bash
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+```
+## Authors
+
+Boluwatife Oyeniran [GitHub](https://github.com/Sunflowerbecha)
+
+Funminiyi Peter [GitHub](https://github.com/Funminiyiop)
