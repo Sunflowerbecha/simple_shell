@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
 * set_alias - To set an alias 'name' with new value,
 * or creates new alias with name and value.
